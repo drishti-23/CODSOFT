@@ -22,9 +22,24 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 
+output_file_path1="./dataSet/creditcard1.csv"
+output_file_path2="./dataSet/creditcard2.csv"
+output_file_path_combined = "./dataSet/combinedcreditcard.csv"
+
+def consolidateFile(output_file_path_combined) :
+    with open(output_file_path_combined, 'w') as combined_file:
+        with open(output_file_path1, 'r') as file1:
+            for line in file1:
+                combined_file.write(line)
+                
+        with open(output_file_path2, 'r') as file2:
+            for line in file2:
+                combined_file.write(line)
+consolidateFile(output_file_path_combined)
+
 """#**Reading Dataset**"""
 
-dataset = pd.read_csv("/content/creditcard.csv")
+dataset = pd.read_csv(output_file_path_combined)
 dataset
 
 # getting top five data
